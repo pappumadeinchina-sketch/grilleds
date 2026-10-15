@@ -1,0 +1,696 @@
+{
+  "users": [
+    {
+      "id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "username": "7yf57l",
+      "display_name": "7yf57l",
+      "email": "7yf57l@gmail.com",
+      "password_hash": "$2a$10$Sm4Y/cJFyClpXCjyKxEYHex79srcF3d6iDHJRkBMXvNpTD5DI69ye",
+      "avatar_url": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22128%22%20height%3D%22128%22%20viewBox%3D%220%200%20128%20128%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f97316%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23c2410c%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%2264%22%20fill%3D%22url(%23grad)%22%20%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2254%25%22%20font-family%3D%22Plus%20Jakarta%20Sans%2C%20sans-serif%22%20font-size%3D%2256%22%20font-weight%3D%22bold%22%20fill%3D%22%23ffffff%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%3E7%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "about": "👑 PulseChat System Owner & Administrator",
+      "api_key": "pc_live_a9d9e42bd8ea2244d12f14218cd497d3fbb257f09739d313",
+      "role": "owner",
+      "is_owner": 1,
+      "is_banned": 0,
+      "is_muted": 0,
+      "online": 0,
+      "last_seen": 1792073779254,
+      "created_at": 1791615802741
+    },
+    {
+      "id": "fac1297c-39dd-491f-b149-f57f2a13ec95",
+      "username": "hfghfgh",
+      "display_name": "gfhfg",
+      "email": "",
+      "password_hash": "$2a$10$3v8hzrXW96p.E9WKhpe47.L5eoqsZmRf7qMTVjaHedaaxjEMFCIci",
+      "avatar_url": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22128%22%20height%3D%22128%22%20viewBox%3D%220%200%20128%20128%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%233b82f6%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%231d4ed8%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%2264%22%20fill%3D%22url(%23grad)%22%20%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2254%25%22%20font-family%3D%22Plus%20Jakarta%20Sans%2C%20sans-serif%22%20font-size%3D%2256%22%20font-weight%3D%22bold%22%20fill%3D%22%23ffffff%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%3EG%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "about": "Hey there! I am using PulseChat.",
+      "api_key": "pc_live_a435610df581a42c3ef7c3f2b1ddd432062369975dd2aabe",
+      "role": "user",
+      "is_owner": 0,
+      "is_banned": 0,
+      "is_muted": 0,
+      "online": 0,
+      "last_seen": 1791622024246,
+      "created_at": 1791619397385
+    },
+    {
+      "id": "896cd5a1-a8b3-4fab-8c16-d00b54ee065a",
+      "username": "7yf57lalt",
+      "display_name": "ytspark",
+      "email": "7yf57l-alt@github.com",
+      "github_id": "252442806",
+      "password_hash": "",
+      "avatar_url": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22128%22%20height%3D%22128%22%20viewBox%3D%220%200%20128%20128%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2306b6d4%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230e7490%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%2264%22%20fill%3D%22url(%23grad)%22%20%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2254%25%22%20font-family%3D%22Plus%20Jakarta%20Sans%2C%20sans-serif%22%20font-size%3D%2256%22%20font-weight%3D%22bold%22%20fill%3D%22%23ffffff%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%3EY%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "about": "Hey there! I am using PulseChat.",
+      "api_key": "pc_live_fe90f0569490f4dbfe9f590112389f534113b47bbbe736be",
+      "role": "user",
+      "is_owner": 0,
+      "is_banned": 0,
+      "is_muted": 0,
+      "online": 0,
+      "last_seen": 1791623462487,
+      "created_at": 1791622392025
+    },
+    {
+      "id": "e5e326af-a3c3-4248-b895-bcadf48a0520",
+      "username": "pappumadeinchina",
+      "display_name": "Made In China",
+      "email": "pappu.madeinchina@gmail.com",
+      "google_id": "107478907490519558823",
+      "password_hash": "",
+      "avatar_url": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22128%22%20height%3D%22128%22%20viewBox%3D%220%200%20128%20128%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2310b981%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23047857%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%2264%22%20fill%3D%22url(%23grad)%22%20%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2254%25%22%20font-family%3D%22Plus%20Jakarta%20Sans%2C%20sans-serif%22%20font-size%3D%2256%22%20font-weight%3D%22bold%22%20fill%3D%22%23ffffff%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "about": "Hey there! I am using PulseChat.",
+      "api_key": "pc_live_88f913932d0e93dfbfa0c2f912fbf492db402ae861a3fe0c",
+      "role": "user",
+      "is_owner": 0,
+      "is_banned": 0,
+      "is_muted": 0,
+      "online": 0,
+      "last_seen": 1792073830039,
+      "created_at": 1791631786759
+    },
+    {
+      "id": "9bb42238-1ba3-4fee-a25c-cc51a89b11ca",
+      "username": "newuser_8289",
+      "display_name": "Test New User",
+      "email": "",
+      "password_hash": "$2a$10$hvNxmOUIk6LHvMg99Brsb.hrBvIRXj0t6o/4oSNiFDr0pUiqUywlC",
+      "avatar_url": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22128%22%20height%3D%22128%22%20viewBox%3D%220%200%20128%20128%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2310b981%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23047857%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%2264%22%20fill%3D%22url(%23grad)%22%20%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2254%25%22%20font-family%3D%22Plus%20Jakarta%20Sans%2C%20sans-serif%22%20font-size%3D%2256%22%20font-weight%3D%22bold%22%20fill%3D%22%23ffffff%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%3ET%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "about": "Hey there! I am using GrilledS.",
+      "api_key": "pc_live_d378237670e5093173f7229ea78f236ca5b5b4cb33b37761",
+      "role": "user",
+      "is_owner": 0,
+      "is_banned": 0,
+      "is_muted": 0,
+      "online": 0,
+      "last_seen": 1791707928667,
+      "created_at": 1791707928667
+    },
+    {
+      "id": "4a76338e-db74-483c-a374-aa4b114b1894",
+      "username": "auto_joined_1041",
+      "display_name": "Auto Member 1041",
+      "email": "",
+      "password_hash": "$2a$10$YlbqVGnuxCm6IFInPaEsQ.Vpr1mIoJfqS5/PvgfPEadg7cUGvSQ.q",
+      "avatar_url": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22128%22%20height%3D%22128%22%20viewBox%3D%220%200%20128%20128%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%238b5cf6%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%236d28d9%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%2264%22%20fill%3D%22url(%23grad)%22%20%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2254%25%22%20font-family%3D%22Plus%20Jakarta%20Sans%2C%20sans-serif%22%20font-size%3D%2256%22%20font-weight%3D%22bold%22%20fill%3D%22%23ffffff%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "about": "Hey there! I am using GrilledS.",
+      "api_key": "pc_live_39cf82cf26bf35b948c82d1d05504fc553da498df611bc04",
+      "role": "user",
+      "is_owner": 0,
+      "is_banned": 0,
+      "is_muted": 0,
+      "online": 0,
+      "last_seen": 1791708187793,
+      "created_at": 1791708187793
+    },
+    {
+      "id": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "username": "charlie_test",
+      "display_name": "Charlie Chaplin",
+      "email": "",
+      "password_hash": "$2a$10$6XBnaxNnY9VdOov1TRKXoudJPslATZRYb6k.ABP9n0KJLeQSRrCp6",
+      "avatar_url": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22128%22%20height%3D%22128%22%20viewBox%3D%220%200%20128%20128%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ec4899%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23be185d%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%2264%22%20fill%3D%22url(%23grad)%22%20%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2254%25%22%20font-family%3D%22Plus%20Jakarta%20Sans%2C%20sans-serif%22%20font-size%3D%2256%22%20font-weight%3D%22bold%22%20fill%3D%22%23ffffff%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%3EC%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "about": "Hey there! I am using GrilledS.",
+      "api_key": "pc_live_75eb6c5f4c435fe8c3bdc350f7737eb2cee8b2cd17756e9d",
+      "role": "user",
+      "is_owner": 0,
+      "is_banned": 0,
+      "is_muted": 0,
+      "online": 0,
+      "last_seen": 1791708430661,
+      "created_at": 1791708430661
+    }
+  ],
+  "conversations": [
+    {
+      "id": "edbe02fa-7588-4c91-8fc2-178f17630bd1",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "created_at": 1791705070548,
+      "updated_at": 1791707810573
+    },
+    {
+      "id": "group_everyone",
+      "type": "group",
+      "name": "🌍 Everyone",
+      "avatar_url": "https://api.dicebear.com/7.x/identicon/svg?seed=GrilledSEveryoneCommunity",
+      "created_by": "system",
+      "created_at": 1791707909279,
+      "updated_at": 1792054166920,
+      "is_everyone_group": 1
+    },
+    {
+      "id": "30d961f5-8a7e-408a-b881-1f66e0577f34",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "created_at": 1791708418167,
+      "updated_at": 1791708418167
+    },
+    {
+      "id": "2a3d341f-fd69-42d4-aa9c-e610626e5915",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "created_at": 1791708418170,
+      "updated_at": 1791708418170
+    },
+    {
+      "id": "18d5161f-18b5-4a86-b849-877077ffb28d",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "created_at": 1791708418172,
+      "updated_at": 1791708418172
+    },
+    {
+      "id": "447f3399-6851-4013-9318-0781d5d5e27c",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "created_at": 1791708418174,
+      "updated_at": 1791708418174
+    },
+    {
+      "id": "59bf8f17-aa1a-460c-8041-e60c258777fb",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "created_at": 1791708418176,
+      "updated_at": 1791708418176
+    },
+    {
+      "id": "33a8a231-73e9-4ac1-a35b-e0c9a1798547",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "created_at": 1791708418178,
+      "updated_at": 1791708418178
+    },
+    {
+      "id": "7d6d16fa-91b0-471e-b392-d78b30583594",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "created_at": 1791708418180,
+      "updated_at": 1791708418180
+    },
+    {
+      "id": "8074abd1-3c9e-4d47-b520-0e89334e26f7",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "created_at": 1791708430694,
+      "updated_at": 1791708430694
+    },
+    {
+      "id": "77242e84-7d07-4c34-baab-239afd9f24ef",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "created_at": 1791708430696,
+      "updated_at": 1791708430696
+    },
+    {
+      "id": "c0141abf-bbd3-49f3-819e-66407af4c947",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "created_at": 1791708430699,
+      "updated_at": 1791708430699
+    },
+    {
+      "id": "f1c4ffd5-8505-4057-b47e-a73567bf3a33",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "created_at": 1791708430701,
+      "updated_at": 1791708430701
+    },
+    {
+      "id": "6d1bc20d-ab16-4f34-b363-a5e3d5442ee0",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "created_at": 1791708430703,
+      "updated_at": 1791708430703
+    },
+    {
+      "id": "8a98c16c-5e85-4df6-bb12-9bb7cd055342",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "created_at": 1791708430705,
+      "updated_at": 1791708430705
+    },
+    {
+      "id": "76267520-ef9a-41b5-b6c3-421d2352d307",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "created_at": 1791708430708,
+      "updated_at": 1791708430708
+    },
+    {
+      "id": "2613a8eb-9795-44c6-9e2b-0598e4fe057e",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "created_at": 1791708430712,
+      "updated_at": 1791708430712
+    },
+    {
+      "id": "b783324b-982b-43d8-8718-a5cd92ee5487",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "created_at": 1791708430715,
+      "updated_at": 1791708430715
+    },
+    {
+      "id": "68911eac-8668-4f1c-8dbe-ee0200c1c738",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "e5e326af-a3c3-4248-b895-bcadf48a0520",
+      "created_at": 1792073816556,
+      "updated_at": 1792073816556
+    },
+    {
+      "id": "fdacf125-ad19-4935-9dac-fd92ae40e0c2",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "e5e326af-a3c3-4248-b895-bcadf48a0520",
+      "created_at": 1792073816560,
+      "updated_at": 1792073816560
+    },
+    {
+      "id": "fcaf53ee-b510-48b5-b9e9-9481d0801ebd",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "e5e326af-a3c3-4248-b895-bcadf48a0520",
+      "created_at": 1792073816565,
+      "updated_at": 1792073816565
+    },
+    {
+      "id": "a0cb56ba-881e-474a-8771-2e74aff64292",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "e5e326af-a3c3-4248-b895-bcadf48a0520",
+      "created_at": 1792073816569,
+      "updated_at": 1792073816569
+    }
+  ],
+  "participants": [
+    {
+      "conversation_id": "edbe02fa-7588-4c91-8fc2-178f17630bd1",
+      "user_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "role": "member",
+      "joined_at": 1791705070548
+    },
+    {
+      "conversation_id": "group_everyone",
+      "user_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "role": "admin",
+      "joined_at": 1791707909279
+    },
+    {
+      "conversation_id": "group_everyone",
+      "user_id": "fac1297c-39dd-491f-b149-f57f2a13ec95",
+      "role": "member",
+      "joined_at": 1791707909279
+    },
+    {
+      "conversation_id": "group_everyone",
+      "user_id": "896cd5a1-a8b3-4fab-8c16-d00b54ee065a",
+      "role": "member",
+      "joined_at": 1791707909279
+    },
+    {
+      "conversation_id": "group_everyone",
+      "user_id": "e5e326af-a3c3-4248-b895-bcadf48a0520",
+      "role": "member",
+      "joined_at": 1791707909279
+    },
+    {
+      "conversation_id": "group_everyone",
+      "user_id": "9bb42238-1ba3-4fee-a25c-cc51a89b11ca",
+      "role": "member",
+      "joined_at": 1791707928668
+    },
+    {
+      "conversation_id": "group_everyone",
+      "user_id": "4a76338e-db74-483c-a374-aa4b114b1894",
+      "role": "member",
+      "joined_at": 1791708187794
+    },
+    {
+      "conversation_id": "30d961f5-8a7e-408a-b881-1f66e0577f34",
+      "user_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "role": "member",
+      "joined_at": 1791708418167
+    },
+    {
+      "conversation_id": "2a3d341f-fd69-42d4-aa9c-e610626e5915",
+      "user_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "role": "member",
+      "joined_at": 1791708418170
+    },
+    {
+      "conversation_id": "18d5161f-18b5-4a86-b849-877077ffb28d",
+      "user_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "role": "member",
+      "joined_at": 1791708418172
+    },
+    {
+      "conversation_id": "18d5161f-18b5-4a86-b849-877077ffb28d",
+      "user_id": "fac1297c-39dd-491f-b149-f57f2a13ec95",
+      "role": "member",
+      "joined_at": 1791708418172
+    },
+    {
+      "conversation_id": "447f3399-6851-4013-9318-0781d5d5e27c",
+      "user_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "role": "member",
+      "joined_at": 1791708418174
+    },
+    {
+      "conversation_id": "447f3399-6851-4013-9318-0781d5d5e27c",
+      "user_id": "896cd5a1-a8b3-4fab-8c16-d00b54ee065a",
+      "role": "member",
+      "joined_at": 1791708418174
+    },
+    {
+      "conversation_id": "59bf8f17-aa1a-460c-8041-e60c258777fb",
+      "user_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "role": "member",
+      "joined_at": 1791708418176
+    },
+    {
+      "conversation_id": "59bf8f17-aa1a-460c-8041-e60c258777fb",
+      "user_id": "e5e326af-a3c3-4248-b895-bcadf48a0520",
+      "role": "member",
+      "joined_at": 1791708418176
+    },
+    {
+      "conversation_id": "33a8a231-73e9-4ac1-a35b-e0c9a1798547",
+      "user_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "role": "member",
+      "joined_at": 1791708418178
+    },
+    {
+      "conversation_id": "33a8a231-73e9-4ac1-a35b-e0c9a1798547",
+      "user_id": "9bb42238-1ba3-4fee-a25c-cc51a89b11ca",
+      "role": "member",
+      "joined_at": 1791708418178
+    },
+    {
+      "conversation_id": "7d6d16fa-91b0-471e-b392-d78b30583594",
+      "user_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "role": "member",
+      "joined_at": 1791708418180
+    },
+    {
+      "conversation_id": "7d6d16fa-91b0-471e-b392-d78b30583594",
+      "user_id": "4a76338e-db74-483c-a374-aa4b114b1894",
+      "role": "member",
+      "joined_at": 1791708418180
+    },
+    {
+      "conversation_id": "group_everyone",
+      "user_id": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "role": "member",
+      "joined_at": 1791708430662
+    },
+    {
+      "conversation_id": "8074abd1-3c9e-4d47-b520-0e89334e26f7",
+      "user_id": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "role": "member",
+      "joined_at": 1791708430694
+    },
+    {
+      "conversation_id": "77242e84-7d07-4c34-baab-239afd9f24ef",
+      "user_id": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "role": "member",
+      "joined_at": 1791708430696
+    },
+    {
+      "conversation_id": "c0141abf-bbd3-49f3-819e-66407af4c947",
+      "user_id": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "role": "member",
+      "joined_at": 1791708430699
+    },
+    {
+      "conversation_id": "f1c4ffd5-8505-4057-b47e-a73567bf3a33",
+      "user_id": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "role": "member",
+      "joined_at": 1791708430701
+    },
+    {
+      "conversation_id": "f1c4ffd5-8505-4057-b47e-a73567bf3a33",
+      "user_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "role": "member",
+      "joined_at": 1791708430701
+    },
+    {
+      "conversation_id": "6d1bc20d-ab16-4f34-b363-a5e3d5442ee0",
+      "user_id": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "role": "member",
+      "joined_at": 1791708430703
+    },
+    {
+      "conversation_id": "6d1bc20d-ab16-4f34-b363-a5e3d5442ee0",
+      "user_id": "fac1297c-39dd-491f-b149-f57f2a13ec95",
+      "role": "member",
+      "joined_at": 1791708430703
+    },
+    {
+      "conversation_id": "8a98c16c-5e85-4df6-bb12-9bb7cd055342",
+      "user_id": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "role": "member",
+      "joined_at": 1791708430705
+    },
+    {
+      "conversation_id": "8a98c16c-5e85-4df6-bb12-9bb7cd055342",
+      "user_id": "896cd5a1-a8b3-4fab-8c16-d00b54ee065a",
+      "role": "member",
+      "joined_at": 1791708430705
+    },
+    {
+      "conversation_id": "76267520-ef9a-41b5-b6c3-421d2352d307",
+      "user_id": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "role": "member",
+      "joined_at": 1791708430708
+    },
+    {
+      "conversation_id": "76267520-ef9a-41b5-b6c3-421d2352d307",
+      "user_id": "e5e326af-a3c3-4248-b895-bcadf48a0520",
+      "role": "member",
+      "joined_at": 1791708430708
+    },
+    {
+      "conversation_id": "2613a8eb-9795-44c6-9e2b-0598e4fe057e",
+      "user_id": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "role": "member",
+      "joined_at": 1791708430712
+    },
+    {
+      "conversation_id": "2613a8eb-9795-44c6-9e2b-0598e4fe057e",
+      "user_id": "9bb42238-1ba3-4fee-a25c-cc51a89b11ca",
+      "role": "member",
+      "joined_at": 1791708430712
+    },
+    {
+      "conversation_id": "b783324b-982b-43d8-8718-a5cd92ee5487",
+      "user_id": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "role": "member",
+      "joined_at": 1791708430715
+    },
+    {
+      "conversation_id": "b783324b-982b-43d8-8718-a5cd92ee5487",
+      "user_id": "4a76338e-db74-483c-a374-aa4b114b1894",
+      "role": "member",
+      "joined_at": 1791708430715
+    },
+    {
+      "conversation_id": "68911eac-8668-4f1c-8dbe-ee0200c1c738",
+      "user_id": "e5e326af-a3c3-4248-b895-bcadf48a0520",
+      "role": "member",
+      "joined_at": 1792073816556
+    },
+    {
+      "conversation_id": "68911eac-8668-4f1c-8dbe-ee0200c1c738",
+      "user_id": "fac1297c-39dd-491f-b149-f57f2a13ec95",
+      "role": "member",
+      "joined_at": 1792073816556
+    },
+    {
+      "conversation_id": "fdacf125-ad19-4935-9dac-fd92ae40e0c2",
+      "user_id": "e5e326af-a3c3-4248-b895-bcadf48a0520",
+      "role": "member",
+      "joined_at": 1792073816560
+    },
+    {
+      "conversation_id": "fdacf125-ad19-4935-9dac-fd92ae40e0c2",
+      "user_id": "896cd5a1-a8b3-4fab-8c16-d00b54ee065a",
+      "role": "member",
+      "joined_at": 1792073816560
+    },
+    {
+      "conversation_id": "fcaf53ee-b510-48b5-b9e9-9481d0801ebd",
+      "user_id": "e5e326af-a3c3-4248-b895-bcadf48a0520",
+      "role": "member",
+      "joined_at": 1792073816565
+    },
+    {
+      "conversation_id": "fcaf53ee-b510-48b5-b9e9-9481d0801ebd",
+      "user_id": "9bb42238-1ba3-4fee-a25c-cc51a89b11ca",
+      "role": "member",
+      "joined_at": 1792073816565
+    },
+    {
+      "conversation_id": "a0cb56ba-881e-474a-8771-2e74aff64292",
+      "user_id": "e5e326af-a3c3-4248-b895-bcadf48a0520",
+      "role": "member",
+      "joined_at": 1792073816569
+    },
+    {
+      "conversation_id": "a0cb56ba-881e-474a-8771-2e74aff64292",
+      "user_id": "4a76338e-db74-483c-a374-aa4b114b1894",
+      "role": "member",
+      "joined_at": 1792073816569
+    }
+  ],
+  "messages": [
+    {
+      "id": "27536ecb-618d-4ed5-8767-94c039fe3429",
+      "conversation_id": "edbe02fa-7588-4c91-8fc2-178f17630bd1",
+      "sender_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "sender_username": "7yf57l",
+      "sender_name": "7yf57l",
+      "sender_avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22128%22%20height%3D%22128%22%20viewBox%3D%220%200%20128%20128%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f97316%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23c2410c%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%2264%22%20fill%3D%22url(%23grad)%22%20%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2254%25%22%20font-family%3D%22Plus%20Jakarta%20Sans%2C%20sans-serif%22%20font-size%3D%2256%22%20font-weight%3D%22bold%22%20fill%3D%22%23ffffff%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%3E7%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "sender_is_owner": 1,
+      "content": "yo",
+      "message_type": "text",
+      "media_url": "",
+      "media_meta": {},
+      "reply_to_id": null,
+      "status": "read",
+      "created_at": 1791705104207
+    },
+    {
+      "id": "78c3a733-6d88-4a77-a17d-69af68d2fe6f",
+      "conversation_id": "1ae4144f-7403-4f6f-9bdd-0797d23e8d3a",
+      "sender_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "sender_username": "7yf57l",
+      "sender_name": "7yf57l",
+      "sender_avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22128%22%20height%3D%22128%22%20viewBox%3D%220%200%20128%20128%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f97316%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23c2410c%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%2264%22%20fill%3D%22url(%23grad)%22%20%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2254%25%22%20font-family%3D%22Plus%20Jakarta%20Sans%2C%20sans-serif%22%20font-size%3D%2256%22%20font-weight%3D%22bold%22%20fill%3D%22%23ffffff%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%3E7%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "sender_is_owner": 1,
+      "content": "📢 [OFFICIAL ANNOUNCEMENT FROM OWNER]\n*hi*\nfgf",
+      "message_type": "text",
+      "media_url": "",
+      "media_meta": {
+        "announcement": true,
+        "fromOwner": true
+      },
+      "reply_to_id": null,
+      "status": "sent",
+      "created_at": 1791707810568
+    },
+    {
+      "id": "ca3e1c6f-cae4-450c-9d1a-759ac9ab20a9",
+      "conversation_id": "c34640c9-6925-449a-b215-bf78206f1c84",
+      "sender_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "sender_username": "7yf57l",
+      "sender_name": "7yf57l",
+      "sender_avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22128%22%20height%3D%22128%22%20viewBox%3D%220%200%20128%20128%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f97316%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23c2410c%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%2264%22%20fill%3D%22url(%23grad)%22%20%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2254%25%22%20font-family%3D%22Plus%20Jakarta%20Sans%2C%20sans-serif%22%20font-size%3D%2256%22%20font-weight%3D%22bold%22%20fill%3D%22%23ffffff%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%3E7%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "sender_is_owner": 1,
+      "content": "📢 [OFFICIAL ANNOUNCEMENT FROM OWNER]\n*hi*\nfgf",
+      "message_type": "text",
+      "media_url": "",
+      "media_meta": {
+        "announcement": true,
+        "fromOwner": true
+      },
+      "reply_to_id": null,
+      "status": "sent",
+      "created_at": 1791707810570
+    },
+    {
+      "id": "d4b0d338-188f-446b-8222-16ab398139b8",
+      "conversation_id": "edbe02fa-7588-4c91-8fc2-178f17630bd1",
+      "sender_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "sender_username": "7yf57l",
+      "sender_name": "7yf57l",
+      "sender_avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22128%22%20height%3D%22128%22%20viewBox%3D%220%200%20128%20128%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f97316%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23c2410c%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%2264%22%20fill%3D%22url(%23grad)%22%20%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2254%25%22%20font-family%3D%22Plus%20Jakarta%20Sans%2C%20sans-serif%22%20font-size%3D%2256%22%20font-weight%3D%22bold%22%20fill%3D%22%23ffffff%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%3E7%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "sender_is_owner": 1,
+      "content": "📢 [OFFICIAL ANNOUNCEMENT FROM OWNER]\n*hi*\nfgf",
+      "message_type": "text",
+      "media_url": "",
+      "media_meta": {
+        "announcement": true,
+        "fromOwner": true
+      },
+      "reply_to_id": null,
+      "status": "sent",
+      "created_at": 1791707810573
+    },
+    {
+      "id": "86794e42-84ce-4782-954e-d51e11eba385",
+      "conversation_id": "group_everyone",
+      "sender_id": "system",
+      "sender_username": "system",
+      "sender_name": "GrilledS",
+      "sender_avatar": "https://api.dicebear.com/7.x/identicon/svg?seed=GrilledSSystem",
+      "sender_is_owner": 1,
+      "content": "🎉 Welcome to GrilledS Everyone Group! All registered users automatically join here to chat, share reels, and connect.",
+      "message_type": "text",
+      "media_url": "",
+      "media_meta": {},
+      "reply_to_id": null,
+      "status": "read",
+      "created_at": 1791707909281,
+      "reactions": {}
+    },
+    {
+      "id": "36c25c48-161b-4dbe-9d5f-73cfa762b3e0",
+      "conversation_id": "group_everyone",
+      "sender_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "sender_username": "7yf57l",
+      "sender_name": "7yf57l",
+      "sender_avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22128%22%20height%3D%22128%22%20viewBox%3D%220%200%20128%20128%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f97316%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23c2410c%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%2264%22%20fill%3D%22url(%23grad)%22%20%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2254%25%22%20font-family%3D%22Plus%20Jakarta%20Sans%2C%20sans-serif%22%20font-size%3D%2256%22%20font-weight%3D%22bold%22%20fill%3D%22%23ffffff%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%3E7%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "sender_is_owner": 1,
+      "content": "Hi Guyes",
+      "message_type": "text",
+      "media_url": "",
+      "media_meta": {},
+      "reply_to_id": null,
+      "status": "sent",
+      "created_at": 1792054166920
+    }
+  ],
+  "calls": [],
+  "webhooks": []
+}

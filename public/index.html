@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GrilledS — Real-Time Calling & Direct Messaging</title>
+  <link rel="icon" type="image/jpeg" href="/assets/logo1.jpg">
+  
+  <!-- FontAwesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Socket.io -->
+  <script src="/socket.io/socket.io.js"></script>
+  
+  <link rel="stylesheet" href="/css/styles.css?v=4">
+  
+  <!-- Immediate Auth Guard: redirect unauthenticated users to /login instantly -->
+  <script>
+    (function () {
+      try {
+        var q = window.location.search || '';
+        var h = window.location.hash || '';
+        var hasQueryToken = q.indexOf('token=') !== -1 || h.indexOf('token=') !== -1;
+        var token = localStorage.getItem('pc_token');
+        var hasValidSavedToken = token && token !== 'null' && token !== 'undefined' && token.trim().length > 10;
+        if (!hasQueryToken && !hasValidSavedToken) {
+          window.location.replace('/login');
+        }
+      } catch (e) {
+        window.location.replace('/login');
+      }
+    })();
+  </script>
+</head>
+<body class="theme-dark">
+
+  <!-- ==================== APP LOADING SCREEN ==================== -->
+  <div id="app-loading-screen" class="app-loading-overlay" style="display: none;">
+    <div class="app-loading-content" id="app-loading-content">
+      <div class="app-loading-spinner" style="border-top-color: #f97316;"></div>
+      <div class="app-loading-brand">
+        <img src="/assets/logo1.jpg" alt="GrilledS Logo" style="width: 32px; height: 32px; border-radius: 8px; object-fit: cover;">
+        <span>GrilledS</span>
+      </div>
+      <p id="app-loading-status-text">Loading your chats...</p>
+    </div>
+  </div>
+
+  <script>
+    // Only display loading screen if user has a session token
+    (function() {
+      var q = window.location.search || '';
+      var h = window.location.hash || '';
+      var hasQueryToken = q.indexOf('token=') !== -1 || h.indexOf('token=') !== -1;
+      var token = localStorage.getItem('pc_token');
+      var hasValidSavedToken = token && token !== 'null' && token !== 'undefined' && token.trim().length > 10;
+      if (hasQueryToken || hasValidSavedToken) {
+        var ls = document.getElementById('app-loading-screen');
+        if (ls) ls.style.display = 'flex';
+      }
+    })();
+
+    // Safety auto-dismiss: ensure loading screen is completely dismissed
+    setTimeout(function() {
+      var token = localStorage.getItem('pc_token');
+      if (!token || token === 'null' || token === 'undefined' || token.trim().length < 10) {
+        window.location.replace('/login');
+        return;
+      }
+      var loading = document.getElementById('app-loading-screen');
+      if (loading) {
+        loading.style.display = 'none';
+        try { loading.remove(); } catch(e) {}
+      }
+      var appScreen = document.getElementById('app-screen');
+      if (appScreen) {
+        appScreen.classList.remove('hidden');
+        appScreen.style.display = 'flex';
+      }
+    }, 1200);
+  </script>
+
+  <!-- ==================== MAIN CHAT APP ==================== -->
+  <div id="app-screen" class="app-layout hidden">
+
+    <!-- SIDEBAR 1: Left Nav / Activities -->
+    <nav class="app-rail">
+      <div class="rail-top">
+        <div class="rail-logo" title="GrilledS">
+          <img src="/assets/logo1.jpg" alt="GrilledS" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+        </div>
+        <button class="rail-btn active" id="nav-chats-btn" title="Chats">
+          <i class="fa-solid fa-comment-dots"></i>
+          <span class="badge-dot" id="unread-dot"></span>
+        </button>
+        <button class="rail-btn" id="nav-calls-btn" title="Calls & Call Logs (WhatsApp)">
+          <i class="fa-solid fa-phone"></i>
+        </button>
+        <button class="rail-btn" id="nav-api-btn" title="Developer API & Bot Automation">
+          <i class="fa-solid fa-code"></i>
+        </button>
+        <button class="rail-btn" id="nav-glasses-btn" title="Bluetooth Glasses & Pi IoT">
+          <i class="fa-solid fa-glasses"></i>
+        </button>
+        <button class="rail-btn" id="nav-admin-btn" title="Owner Admin & Moderation Panel">
+          <i class="fa-solid fa-crown" style="color: #fbbf24;"></i>
+        </button>
+      </div>
+
+      <div class="rail-bottom">
+        <button class="rail-btn" id="theme-toggle" title="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <div class="user-avatar-wrapper" id="current-user-avatar-btn" title="My Profile & Settings">
+          <div class="avatar-crown-container">
+            <span class="owner-crown-icon hidden" id="current-user-crown"><i class="fa-solid fa-crown"></i></span>
+            <img id="current-user-avatar" src="" alt="Avatar">
+          </div>
+          <span class="status-indicator online"></span>
+        </div>
+
+        <!-- Profile Bottom Flyout Menu -->
+        <div class="profile-flyout-menu hidden" id="profile-flyout-menu">
+          <div class="profile-menu-header">
+            <div class="avatar-crown-container">
+              <span class="owner-crown-icon hidden" id="flyout-user-crown"><i class="fa-solid fa-crown"></i></span>
+              <img id="flyout-user-avatar" src="" alt="Avatar">
+            </div>
+            <div class="flyout-user-meta">
+              <h4 id="flyout-display-name">Username</h4>
+              <p id="flyout-user-tag">@username</p>
+            </div>
+          </div>
+          <div class="profile-menu-items">
+            <button class="profile-menu-item" id="btn-open-profile-settings">
+              <i class="fa-solid fa-user-pen"></i>
+              <span>Profile Settings</span>
+            </button>
+            <button class="profile-menu-item" id="btn-toggle-notifs">
+              <i class="fa-solid fa-bell" id="notif-menu-icon"></i>
+              <span id="notif-menu-text">Notifications: ON</span>
+            </button>
+            <button class="profile-menu-item" id="btn-open-account-settings">
+              <i class="fa-solid fa-gear"></i>
+              <span>Account Settings</span>
+            </button>
+            <button class="profile-menu-item" id="btn-open-admin-from-menu">
+              <i class="fa-solid fa-crown" style="color: #fbbf24;"></i>
+              <span>Owner Admin Panel</span>
+            </button>
+            <div class="profile-menu-divider"></div>
+            <button class="profile-menu-item danger" id="btn-logout">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <span>Log Out</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- SIDEBAR 2: Conversation List / WhatsApp Call Logs / Directory -->
+    <aside class="conversations-sidebar" id="conversations-sidebar">
+      
+      <!-- Panel Header -->
+      <div class="sidebar-header">
+        <h2 id="sidebar-title">Chats</h2>
+        <div class="sidebar-actions">
+          <button class="btn-icon" id="btn-new-chat" title="New Chat or Group">
+            <i class="fa-solid fa-square-plus"></i>
+          </button>
+          <button class="btn-icon" id="btn-search-toggle" title="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- VIEW A: Chats List Panel -->
+      <div id="sidebar-chats-panel">
+        <!-- Search Bar -->
+        <div class="search-box-container">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="conversation-search" placeholder="Search or start new chat...">
+          </div>
+        </div>
+
+        <!-- Chat Categories / Filter Chips -->
+        <div class="filter-chips">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="unread">Unread</button>
+          <button class="chip" data-filter="groups">Groups</button>
+          <button class="chip" data-filter="people"><i class="fa-solid fa-users"></i> People</button>
+        </div>
+
+        <!-- Conversations List -->
+        <div class="conversations-list" id="conversations-list">
+          <div class="loading-state">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+            <span>Loading conversations...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW B: WhatsApp-style Call Logs Panel -->
+      <div id="sidebar-calls-panel" class="hidden">
+        <!-- Calls Search Bar -->
+        <div class="search-box-container">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="calls-search" placeholder="Search call history...">
+          </div>
+        </div>
+
+        <!-- Calls Filter Chips -->
+        <div class="filter-chips">
+          <button class="chip active" id="chip-calls-all" data-call-filter="all">All Calls</button>
+          <button class="chip" id="chip-calls-missed" data-call-filter="missed">Missed</button>
+        </div>
+
+        <!-- Call Logs Feed -->
+        <div class="conversations-list calls-list" id="calls-list">
+          <!-- Dynamically populated with WhatsApp-style call logs -->
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CHAT AREA -->
+    <main class="chat-main" id="chat-main">
+      
+      <!-- Placeholder when no conversation is selected -->
+      <div class="empty-chat-state" id="empty-chat-state">
+        <div class="empty-chat-illustration" style="background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(239, 68, 68, 0.1));">
+          <div class="radar-pulse"></div>
+          <img src="/assets/logo1.jpg" alt="GrilledS Logo" style="width: 58px; height: 58px; border-radius: 16px; object-fit: cover; box-shadow: 0 6px 20px rgba(249, 115, 22, 0.45); z-index: 2;">
+        </div>
+        <h2>GrilledS Web</h2>
+        <p>Sizzling speed, peer-to-peer WebRTC calls, WhatsApp call logs, Instagram themes, and custom wallpapers!</p>
+        <div class="empty-chat-badges">
+          <span><i class="fa-solid fa-lock"></i> Encrypted WebRTC</span>
+          <span><i class="fa-solid fa-palette"></i> Instagram Themes</span>
+        </div>
+      </div>
+
+      <!-- Active Conversation View -->
+      <div class="active-chat-wrapper hidden" id="active-chat-wrapper">
+        
+        <!-- Chat Header -->
+        <header class="chat-header">
+          <div class="chat-header-info">
+            <button class="btn-icon mobile-back-btn" id="mobile-back-btn">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <div class="header-avatar-container">
+              <img id="chat-header-avatar" src="" alt="Avatar">
+              <span id="chat-header-status-indicator" class="status-indicator"></span>
+            </div>
+            <div class="chat-header-meta">
+              <h3 id="chat-header-name">Conversation Name</h3>
+              <p id="chat-header-subtext">online</p>
+            </div>
+          </div>
+
+          <div class="chat-header-actions">
+            <button class="btn-icon btn-action-call" id="btn-audio-call" title="Start Voice Call">
+              <i class="fa-solid fa-phone"></i>
+            </button>
+            <button class="btn-icon btn-action-call" id="btn-video-call" title="Start Video Call">
+              <i class="fa-solid fa-video"></i>
+            </button>
+            <button class="btn-icon" id="btn-chat-info" title="Contact Info & Media">
+              <i class="fa-solid fa-circle-info"></i>
+            </button>
+          </div>
+        </header>
+
+        <!-- Message History Feed -->
+        <section class="messages-container" id="messages-container">
+          <div class="messages-feed" id="messages-feed">
+            <!-- Messages rendered dynamically -->
+          </div>
+        </section>
+
+        <!-- Attachment Drawer / Action Bar -->
+        <div class="attachment-tray hidden" id="attachment-tray">
+          <button class="tray-item" id="tray-btn-pdf" title="Share PDF Document">
+            <div class="tray-icon red"><i class="fa-solid fa-file-pdf"></i></div>
+            <span>PDF Doc</span>
+          </button>
+          <button class="tray-item" id="tray-btn-audio" title="Share Music / Audio Song">
+            <div class="tray-icon orange"><i class="fa-solid fa-music"></i></div>
+            <span>Song / Music</span>
+          </button>
+          <button class="tray-item" id="tray-btn-media" title="Share Photos & Videos">
+            <div class="tray-icon purple"><i class="fa-solid fa-image"></i></div>
+            <span>Photos & Videos</span>
+          </button>
+          <button class="tray-item" id="tray-btn-stickers" title="Send Stickers">
+            <div class="tray-icon blue"><i class="fa-solid fa-icons"></i></div>
+            <span>Stickers</span>
+          </button>
+        </div>
+
+        <!-- Sticker Picker Drawer -->
+        <div class="sticker-drawer hidden" id="sticker-drawer">
+          <div class="sticker-drawer-header">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-weight: 700; font-size: 13.5px;"><i class="fa-solid fa-icons" style="color: #f97316;"></i> Stickers (100+)</span>
+              <button class="btn-pill" id="btn-add-custom-sticker" style="padding: 3px 8px; font-size: 11px;">
+                <i class="fa-solid fa-plus"></i> Add Your Own
+              </button>
+            </div>
+            <button class="btn-icon-sm" id="close-sticker-drawer"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <!-- Sticker Categories Bar -->
+          <div class="sticker-categories-bar" id="sticker-categories-bar"></div>
+          <div class="sticker-grid" id="sticker-grid">
+            <!-- Populated dynamically with 100+ clean transparent stickers -->
+          </div>
+        </div>
+
+        <!-- Custom Sticker File Input -->
+        <input type="file" id="sticker-custom-file-input" accept="image/*" class="hidden">
+
+        <!-- Hidden File Inputs -->
+        <input type="file" id="file-input-pdf" accept=".pdf,application/pdf" class="hidden">
+        <input type="file" id="file-input-audio" accept="audio/*,.mp3,.wav,.ogg,.m4a" class="hidden">
+        <input type="file" id="file-input-media" accept="image/*,video/*" class="hidden">
+
+        <!-- Reply Preview Banner (Active when replying to a message) -->
+        <div class="chat-reply-banner hidden" id="chat-reply-banner">
+          <div class="reply-banner-border"></div>
+          <div class="reply-banner-content">
+            <div class="reply-author" id="reply-banner-author">Replying to Contact</div>
+            <div class="reply-snippet" id="reply-banner-snippet">Message preview...</div>
+          </div>
+          <button class="btn-icon-sm reply-banner-close" id="btn-close-reply" title="Cancel Reply">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Input Bar with Voice Note Recorder -->
+        <footer class="chat-input-bar">
+          <button class="btn-icon" id="btn-toggle-attach" title="Attach files">
+            <i class="fa-solid fa-paperclip"></i>
+          </button>
+          
+          <button class="btn-icon" id="btn-toggle-stickers" title="Stickers & Emojis">
+            <i class="fa-regular fa-face-smile"></i>
+          </button>
+
+          <!-- Standard Text Input -->
+          <div class="text-input-wrapper" id="text-input-wrapper">
+            <textarea id="message-input" rows="1" placeholder="Type a message or record audio..."></textarea>
+          </div>
+
+          <!-- Voice Note Recording Overlay (appears during recording) -->
+          <div class="voice-recording-overlay hidden" id="voice-recording-overlay">
+            <div class="rec-pulse-dot"></div>
+            <span class="rec-timer" id="rec-timer">00:00</span>
+            <div class="rec-waveform-bars">
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <button class="btn-rec-cancel" id="btn-cancel-voice" title="Cancel Recording">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+
+          <!-- Voice Recorder / Send Button -->
+          <div class="input-actions">
+            <button class="btn-send-record" id="btn-record-voice" title="Record Voice Note">
+              <i class="fa-solid fa-microphone"></i>
+            </button>
+            <button class="btn-send hidden" id="btn-send-message" title="Send Message">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+        </footer>
+
+      </div>
+    </main>
+
+    <!-- RIGHT PANEL: Context Details / Automation / API Explorer / IoT -->
+    <aside class="right-drawer hidden" id="right-drawer">
+      
+      <!-- Drawer Header -->
+      <div class="drawer-header">
+        <h3 id="drawer-title">Details</h3>
+        <button class="btn-icon" id="btn-close-drawer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="drawer-content" id="drawer-content">
+        <!-- Content dynamically injected: Contact details, API documentation, Smart Glasses control -->
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- ==================== WEBRTC CALLING MODAL ==================== -->
+  <div class="call-modal-overlay hidden" id="call-modal-overlay">
+    <div class="call-modal-card" id="call-modal-card">
+      
+      <!-- Incoming Call Alert State -->
+      <div class="incoming-call-view" id="incoming-call-view">
+        <div class="call-user-avatar">
+          <img id="inc-caller-avatar" src="" alt="Caller">
+          <div class="ring-pulse"></div>
+        </div>
+        <h3 id="inc-caller-name">Alice</h3>
+        <p id="inc-call-type"><i class="fa-solid fa-phone"></i> Incoming Audio Call...</p>
+
+        <div class="call-incoming-buttons">
+          <button class="btn-call-action btn-reject" id="btn-reject-call">
+            <i class="fa-solid fa-phone-slash"></i>
+            <span>Decline</span>
+          </button>
+          <button class="btn-call-action btn-accept" id="btn-accept-call">
+            <i class="fa-solid fa-phone"></i>
+            <span>Accept</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Ongoing Call State (Audio & Video) -->
+      <div class="active-call-view hidden" id="active-call-view">
+        <div class="call-video-container" id="call-video-container">
+          <video id="remote-video" autoplay playsinline></video>
+          <video id="local-video" autoplay playsinline muted></video>
+          <div class="video-overlay-info" id="video-overlay-info">
+            <h4 id="active-call-peer-name">Bob</h4>
+            <span class="call-timer" id="call-timer">00:00</span>
+          </div>
+        </div>
+
+        <div class="active-call-controls">
+          <button class="btn-call-ctrl" id="btn-toggle-mic" title="Mute/Unmute Mic">
+            <i class="fa-solid fa-microphone"></i>
+          </button>
+          <button class="btn-call-ctrl" id="btn-toggle-cam" title="Turn Camera On/Off">
+            <i class="fa-solid fa-video"></i>
+          </button>
+          <button class="btn-call-ctrl" id="btn-toggle-screenshare" title="Share Screen">
+            <i class="fa-solid fa-display"></i>
+          </button>
+          <button class="btn-call-ctrl btn-hangup" id="btn-hangup-call" title="End Call">
+            <i class="fa-solid fa-phone-slash"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== PDF IN-APP VIEWER MODAL ==================== -->
+  <div class="pdf-modal-overlay hidden" id="pdf-modal-overlay">
+    <div class="pdf-modal-container">
+      <div class="pdf-modal-header">
+        <div class="pdf-title-info">
+          <i class="fa-solid fa-file-pdf"></i>
+          <span id="pdf-modal-filename">document.pdf</span>
+        </div>
+        <div class="pdf-modal-actions">
+          <a id="pdf-modal-download" href="#" target="_blank" download class="btn-icon" title="Download">
+            <i class="fa-solid fa-download"></i>
+          </a>
+          <button class="btn-icon" id="btn-close-pdf" title="Close Viewer">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+      <div class="pdf-viewer-frame-wrapper">
+        <iframe id="pdf-frame" src="" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PROFILE & ACCOUNT SETTINGS MODAL ==================== -->
+  <div class="settings-modal-overlay hidden" id="profile-settings-modal">
+    <div class="settings-modal-card">
+      <div class="settings-modal-header">
+        <h3 id="settings-modal-title"><i class="fa-solid fa-user-pen"></i> Profile & Account Settings</h3>
+        <button class="btn-icon" id="btn-close-settings"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="settings-modal-body">
+        <!-- Profile Picture Change Section -->
+        <div class="settings-avatar-section">
+          <div class="avatar-crown-container settings-avatar-large">
+            <span class="owner-crown-icon hidden" id="settings-user-crown"><i class="fa-solid fa-crown"></i></span>
+            <img id="settings-preview-avatar" src="" alt="Avatar">
+          </div>
+          <div class="settings-avatar-controls">
+            <button class="btn btn-primary" id="btn-trigger-avatar-upload" type="button">
+              <i class="fa-solid fa-camera"></i> Change Picture
+            </button>
+            <button class="btn btn-secondary" id="btn-reset-letter-avatar" type="button">
+              <i class="fa-solid fa-font"></i> Reset to Letter Avatar
+            </button>
+            <input type="file" id="avatar-file-input" accept="image/*" class="hidden">
+          </div>
+        </div>
+
+        <form id="form-update-profile" class="settings-form">
+          <div class="form-group">
+            <label><i class="fa-solid fa-id-card"></i> Display Name</label>
+            <input type="text" id="setting-display-name" required>
+          </div>
+          <div class="form-group">
+            <label><i class="fa-solid fa-signature"></i> About / Bio</label>
+            <input type="text" id="setting-about" placeholder="Tell contacts about yourself">
+          </div>
+          <div class="form-group">
+            <label><i class="fa-solid fa-envelope"></i> Email Address</label>
+            <input type="email" id="setting-email" readonly disabled style="opacity: 0.7;">
+          </div>
+          <div class="form-group">
+            <label><i class="fa-solid fa-at"></i> Username</label>
+            <input type="text" id="setting-username" readonly disabled style="opacity: 0.7;">
+          </div>
+          <div class="form-group">
+            <label><i class="fa-solid fa-bell"></i> In-App Sound Notifications</label>
+            <select id="setting-notifications" class="settings-select">
+              <option value="enabled">Enabled (Play Sounds & Alert)</option>
+              <option value="disabled">Muted (Silent)</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            <i class="fa-solid fa-check"></i> Save Changes
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==================== FLOATING MESSAGE CONTEXT & REACTION MENU ==================== -->
+  <div class="msg-context-overlay hidden" id="msg-context-overlay">
+    <div class="msg-context-bubble-anchor" id="msg-context-anchor">
+      <!-- Animated Reaction Pill -->
+      <div class="msg-reactions-floating-pill" id="msg-reactions-floating-pill">
+        <button class="reaction-anim-btn" data-emoji="❤️" title="Love"><span>❤️</span></button>
+        <button class="reaction-anim-btn" data-emoji="😂" title="Haha"><span>😂</span></button>
+        <button class="reaction-anim-btn" data-emoji="😮" title="Wow"><span>😮</span></button>
+        <button class="reaction-anim-btn" data-emoji="😢" title="Sad"><span>😢</span></button>
+        <button class="reaction-anim-btn" data-emoji="🙏" title="Thank you"><span>🙏</span></button>
+        <button class="reaction-anim-btn" data-emoji="🔥" title="Fire"><span>🔥</span></button>
+        <button class="reaction-anim-btn" id="btn-custom-emoji-picker" title="More reactions"><span>➕</span></button>
+      </div>
+
+      <!-- Action Items Card -->
+      <div class="msg-context-actions-card">
+        <button class="context-action-item" id="context-btn-reply">
+          <i class="fa-solid fa-reply"></i>
+          <span>Reply</span>
+        </button>
+        <button class="context-action-item" id="context-btn-forward">
+          <i class="fa-solid fa-share"></i>
+          <span>Forward</span>
+        </button>
+        <button class="context-action-item" id="context-btn-copy">
+          <i class="fa-solid fa-copy"></i>
+          <span>Copy Text</span>
+        </button>
+        <button class="context-action-item danger" id="context-btn-delete">
+          <i class="fa-solid fa-trash"></i>
+          <span>Delete For Me</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FORWARD MESSAGE MODAL ==================== -->
+  <div class="forward-modal-overlay hidden" id="forward-modal-overlay">
+    <div class="forward-modal-card">
+      <div class="forward-modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-share" style="color: var(--primary);"></i>
+          <h3>Forward Message</h3>
+        </div>
+        <button class="btn-icon-sm" id="btn-close-forward"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="forward-preview-box" id="forward-preview-text">
+        Loading snippet...
+      </div>
+      <p style="font-size: 11px; color: var(--text-muted); margin: 10px 0 6px;">Select a conversation to forward to:</p>
+      <div class="forward-chat-list" id="forward-chat-list">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== NEW CHAT & JOINED MEMBERS DIRECTORY MODAL ==================== -->
+  <div class="forward-modal-overlay hidden" id="new-chat-modal-overlay">
+    <div class="forward-modal-card" style="max-width: 460px;">
+      <div class="forward-modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-user-plus" style="color: var(--primary);"></i>
+          <div>
+            <h3 style="margin: 0; font-size: 16px;">New Chat & Members</h3>
+            <span style="font-size: 11px; color: var(--text-muted);">All people who have joined GrilledS</span>
+          </div>
+        </div>
+        <button class="btn-icon-sm" id="btn-close-new-chat"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Quick Action: Create New Group -->
+      <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+        <button class="btn btn-secondary btn-block" id="btn-open-create-group-prompt" style="padding: 8px; font-size: 12px; justify-content: center; gap: 6px;">
+          <i class="fa-solid fa-users" style="color: var(--primary);"></i>
+          <span>Create New Group</span>
+        </button>
+      </div>
+
+      <!-- Search in directory -->
+      <div style="position: relative; margin-bottom: 10px;">
+        <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 10px; top: 11px; font-size: 12px; color: var(--text-muted);"></i>
+        <input type="text" id="directory-modal-search" placeholder="Search people by name or @username..." style="width: 100%; padding: 8px 10px 8px 30px; background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 8px; color: #fff; font-size: 12px;">
+      </div>
+
+      <!-- Directory Users List -->
+      <div class="forward-chat-list" id="directory-modal-users-list" style="max-height: 280px; overflow-y: auto;">
+        <!-- Dynamically rendered list of all joined people -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Elements for Calls and Sounds -->
+  <audio id="audio-ringtone" loop preload="auto" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3"></audio>
+  <audio id="audio-message-sound" preload="auto" src="https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3"></audio>
+
+  <!-- Application Scripts -->
+  <script src="/js/api.js?v=3"></script>
+  <script src="/js/modal.js?v=4"></script>
+  <script src="/js/webrtc.js?v=3"></script>
+  <script src="/js/stickers_data.js?v=3"></script>
+  <script src="/js/app.js?v=3"></script>
+</body>
+</html>
