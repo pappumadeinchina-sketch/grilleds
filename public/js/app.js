@@ -307,7 +307,12 @@ function applyMessageReactionUpdate(msgId, reactions) {
     const temp = document.createElement('div');
     temp.innerHTML = newHtml;
     if (temp.firstElementChild) {
-      bubble.appendChild(temp.firstElementChild);
+      const meta = bubble.querySelector('.msg-meta');
+      if (meta) {
+        bubble.insertBefore(temp.firstElementChild, meta);
+      } else {
+        bubble.appendChild(temp.firstElementChild);
+      }
     }
   }
 }
@@ -506,6 +511,31 @@ function connectSocket() {
       if (action === 'added' && userId !== currentUser?.id) {
         const bubble = document.querySelector(`.msg-bubble[data-msg-id="${messageId}"]`);
         if (bubble) triggerReactionBurst(bubble, emoji);
+      }
+    }
+  });
+
+  socket.on('message_deleted', ({ messageId, conversationId }) => {
+    if (activeConversation && activeConversation.id === conversationId) {
+      const msg = (currentConversationMessages || []).find(m => m.id === messageId);
+      if (msg) {
+        msg.content = '🚫 This message was deleted';
+        msg.message_type = 'deleted';
+        msg.media_url = null;
+        msg.media_meta = null;
+        msg.reactions = {};
+      }
+      const bubble = document.querySelector(`.msg-bubble[data-msg-id="${messageId}"]`);
+      if (bubble) {
+        bubble.classList.add('msg-bubble-deleted');
+        const contentEl = bubble.querySelector('.voice-note-player, .msg-text-content, .media-img-preview, .audio-song-card, .pdf-card, video, .sticker-image');
+        if (contentEl) {
+          contentEl.outerHTML = `<span class="msg-deleted-notice"><i class="fa-solid fa-ban"></i> This message was deleted</span>`;
+        }
+        const rx = bubble.querySelector('.msg-reactions-cluster');
+        if (rx) rx.remove();
+        const vDel = bubble.querySelector('.voice-btn-delete');
+        if (vDel) vDel.remove();
       }
     }
   });
@@ -808,6 +838,16 @@ function openMessageContextMenu(e, msgId) {
   const anchor = document.getElementById('msg-context-anchor');
   if (!overlay || !anchor) return;
 
+  const msg = (currentConversationMessages || []).find(m => m.id === msgId);
+  const isMine = msg && msg.sender_id === currentUser?.id;
+  const isOwner = currentUser && (currentUser.role === 'owner' || currentUser.is_owner === 1 || currentUser.username === '7yf57l');
+  const canDeleteEveryone = isMine || isOwner;
+
+  const btnDelEveryone = document.getElementById('context-btn-delete-everyone');
+  if (btnDelEveryone) {
+    btnDelEveryone.style.display = canDeleteEveryone ? 'flex' : 'none';
+  }
+
   // Highlight held bubble with smooth scale & glow
   document.querySelectorAll('.msg-bubble.msg-held-active').forEach(b => b.classList.remove('msg-held-active'));
   const bubble = document.querySelector(`.msg-bubble[data-msg-id="${msgId}"]`);
@@ -898,7 +938,90 @@ function copyMessageText(msgId) {
   });
 }
 
+async function promptDeleteMessage(msgId) {
+  if (!msgId) return;
+  const msg = (currentConversationMessages || []).find(m => m.id === msgId);
+  const isMine = msg && msg.sender_id === currentUser?.id;
+  const isOwner = currentUser && (currentUser.role === 'owner' || currentUser.is_owner === 1 || currentUser.username === '7yf57l');
+  const canDeleteEveryone = isMine || isOwner;
+
+  if (canDeleteEveryone) {
+    const choice = await GrilledSModal.confirm(
+      'Do you want to delete this message for everyone or only for yourself?',
+      'Delete Message',
+      {
+        confirmText: 'Delete for Everyone',
+        cancelText: 'Delete for Me'
+      }
+    );
+    if (choice) {
+      deleteMessageForEveryone(msgId);
+    } else {
+      deleteMessageForMe(msgId);
+    }
+  } else {
+    const confirmMe = await GrilledSModal.confirm(
+      'Delete this message from your screen?',
+      'Delete Message',
+      { confirmText: 'Delete for Me', cancelText: 'Cancel' }
+    );
+    if (confirmMe) {
+      deleteMessageForMe(msgId);
+    }
+  }
+}
+
+async function deleteMessageForEveryone(msgId) {
+  if (!msgId) return;
+  closeMessageContextMenu();
+
+  try {
+    // 1. Emit real-time socket event
+    if (socket && activeConversation) {
+      socket.emit('delete_message', {
+        conversationId: activeConversation.id,
+        messageId: msgId,
+        deleteFor: 'everyone',
+        userId: currentUser?.id
+      });
+    }
+
+    // 2. Call REST API
+    await API.request(`/api/messages/${msgId}?deleteFor=everyone`, {
+      method: 'DELETE'
+    });
+
+    // 3. Update local state
+    const msg = (currentConversationMessages || []).find(m => m.id === msgId);
+    if (msg) {
+      msg.content = '🚫 This message was deleted';
+      msg.message_type = 'deleted';
+      msg.media_url = null;
+      msg.media_meta = null;
+      msg.reactions = {};
+    }
+
+    const bubble = document.querySelector(`.msg-bubble[data-msg-id="${msgId}"]`);
+    if (bubble) {
+      bubble.classList.add('msg-bubble-deleted');
+      const contentEl = bubble.querySelector('.voice-note-player, .msg-text-content, .media-img-preview, .audio-song-card, .pdf-card, video, .sticker-image');
+      if (contentEl) {
+        contentEl.outerHTML = `<span class="msg-deleted-notice" style="color: var(--text-muted); font-style: italic; font-size: 13px; display: inline-flex; align-items: center; gap: 6px;"><i class="fa-solid fa-ban"></i> This message was deleted</span>`;
+      }
+      const rx = bubble.querySelector('.msg-reactions-cluster');
+      if (rx) rx.remove();
+      const vDel = bubble.querySelector('.voice-btn-delete');
+      if (vDel) vDel.remove();
+    }
+
+    GrilledSModal.toast('Message deleted for everyone', 'success');
+  } catch (err) {
+    GrilledSModal.alert('Could not delete message: ' + err.message, 'Delete Error', 'danger');
+  }
+}
+
 function deleteMessageForMe(msgId) {
+  closeMessageContextMenu();
   const bubble = document.querySelector(`.msg-bubble[data-msg-id="${msgId}"]`);
   if (bubble) {
     bubble.style.transition = 'opacity 0.25s, transform 0.25s';
@@ -906,6 +1029,7 @@ function deleteMessageForMe(msgId) {
     bubble.style.transform = 'scale(0.85)';
     setTimeout(() => bubble.remove(), 250);
   }
+  GrilledSModal.toast('Deleted from your view', 'info');
 }
 
 function openForwardModal(msgId) {
@@ -973,10 +1097,24 @@ function createMessageHTML(msg) {
   const statusTicks = isMine ? (msg.status === 'read' ? '✓✓' : '✓✓') : '';
   const tickClass = msg.status === 'read' ? 'read' : '';
 
+  if (msg.message_type === 'deleted' || msg.is_deleted === 1) {
+    return `
+      <div class="msg-bubble msg-bubble-deleted ${isMine ? 'msg-outgoing' : 'msg-incoming'}" data-msg-id="${msg.id}">
+        <span class="msg-deleted-notice">
+          <i class="fa-solid fa-ban"></i> This message was deleted
+        </span>
+        <div class="msg-meta">
+          <span>${timeStr}</span>
+        </div>
+      </div>
+    `;
+  }
+
   let contentBody = '';
 
   switch (msg.message_type) {
     case 'voice':
+      const isVoiceDeletable = isMine || (currentUser && (currentUser.role === 'owner' || currentUser.is_owner === 1 || currentUser.username === '7yf57l'));
       contentBody = `
         <div class="voice-note-player">
           <button class="voice-btn-play" onclick="playVoiceNote(this, '${msg.media_url}')">
@@ -986,6 +1124,11 @@ function createMessageHTML(msg) {
             ${Array.from({ length: 22 }).map(() => `<span class="wave-bar" style="height: ${Math.floor(Math.random() * 18 + 6)}px"></span>`).join('')}
           </div>
           <span class="voice-duration">0:0${Math.floor(Math.random() * 6 + 3)}</span>
+          ${isVoiceDeletable ? `
+            <button class="voice-btn-delete" onclick="event.stopPropagation(); promptDeleteMessage('${msg.id}')" title="Delete voice message">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          ` : ''}
         </div>
       `;
       break;
@@ -1056,6 +1199,9 @@ function createMessageHTML(msg) {
          ontouchend="cancelMessageTouchHold()"
          ontouchmove="cancelMessageTouchHold()"
          ontouchcancel="cancelMessageTouchHold()">
+      <button class="msg-quick-react-btn" onclick="event.stopPropagation(); openMessageContextMenu(event, '${msg.id}')" title="React with emoji">
+        <i class="fa-regular fa-face-smile"></i>
+      </button>
       <button class="msg-options-trigger" onclick="event.stopPropagation(); openMessageContextMenu(event, '${msg.id}')" title="Message actions">
         <i class="fa-solid fa-chevron-down"></i>
       </button>
@@ -2584,9 +2730,12 @@ function setupEventListeners() {
     closeMessageContextMenu();
   });
 
-  safeOn('context-btn-delete', 'click', () => {
+  safeOn('context-btn-delete-everyone', 'click', () => {
+    if (activeContextMsgId) deleteMessageForEveryone(activeContextMsgId);
+  });
+
+  safeOn('context-btn-delete-me', 'click', () => {
     if (activeContextMsgId) deleteMessageForMe(activeContextMsgId);
-    closeMessageContextMenu();
   });
 
   // Floating Reaction Pill Emojis
