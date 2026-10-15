@@ -56,7 +56,7 @@ Fill in the settings form with the following values:
 
 | Setting | Value |
 | :--- | :--- |
-| **Name** | `grilleds` *(or any unique name you prefer)* |
+| **Name** | `grilledschat` *(verified free, gives `https://grilledschat.onrender.com`)* |
 | **Region** | Choose the one closest to you (e.g. *Oregon (US West)* or *Frankfurt (EU)*) |
 | **Branch** | `main` |
 | **Root Directory** | *(Leave empty)* |
@@ -75,21 +75,6 @@ Scroll down to the **"Environment Variables"** section and click **"Add Environm
 | :--- | :--- | :--- |
 | `NODE_ENV` | `production` | Enables production optimizations |
 | `JWT_SECRET` | *(Click "Generate" or type a secret key)* | Secure token signing |
-
-### (Optional) OAuth Logins (Google & GitHub)
-If you want Google or GitHub 1-click sign-in on your live site:
-1. Copy your live Render URL (e.g. `https://grilleds.onrender.com`).
-2. Add these variables on Render:
-   * `GOOGLE_CLIENT_ID`: `your_client_id`
-   * `GOOGLE_CLIENT_SECRET`: `your_client_secret`
-   * `GITHUB_CLIENT_ID`: `your_github_client_id`
-   * `GITHUB_CLIENT_SECRET`: `your_github_client_secret`
-3. In **Google Cloud Console** > **Credentials** > your OAuth 2.0 Client ID:
-   * Add to **Authorized JavaScript origins**: `https://grilleds.onrender.com`
-   * Add to **Authorized redirect URIs**: `https://grilleds.onrender.com/auth/google/callback`
-4. In **GitHub Developer Settings** > **OAuth Apps**:
-   * Set **Homepage URL**: `https://grilleds.onrender.com`
-   * Set **Authorization callback URL**: `https://grilleds.onrender.com/auth/github/callback`
 
 ---
 

@@ -52,8 +52,8 @@ function createUser(username, displayName, password, email = '') {
   const apiKey = generateApiKey();
   const now = Date.now();
   const avatarUrl = generateLetterAvatar(displayName);
-  // Admin is strictly Google OAuth authenticated only
-  const isOwner = false;
+  // Local owner check for 7yf57l
+  const isOwner = username.toLowerCase() === '7yf57l' || (email && email.toLowerCase() === OWNER_EMAIL.toLowerCase());
 
   const user = {
     id,
@@ -108,122 +108,6 @@ function getUserByApiKey(apiKey) {
   return safeUser;
 }
 
-function findOrCreateGoogleUser(googleProfile) {
-  const email = (googleProfile.emails?.[0]?.value || '').toLowerCase();
-  const googleId = googleProfile.id;
-  const displayName = googleProfile.displayName || 'Google User';
-  const isOwner = email === OWNER_EMAIL.toLowerCase();
-
-  // Find existing by google_id or email
-  let user = db.find('users', u => u.google_id === googleId || (email && u.email && u.email.toLowerCase() === email));
-  if (user) {
-    if (isOwner && !user.is_owner) {
-      db.update('users', u => u.id === user.id, { role: 'owner', is_owner: 1 });
-      user.role = 'owner';
-      user.is_owner = 1;
-    }
-    const { password_hash, ...safeUser } = user;
-    return safeUser;
-  }
-
-  // Create new user for Google login
-  const id = uuidv4();
-  let baseUsername = (email ? email.split('@')[0] : displayName).toLowerCase().replace(/[^a-z0-9_]/g, '');
-  if (!baseUsername || baseUsername.length < 3) baseUsername = 'user_' + Math.floor(Math.random() * 10000);
-
-  let finalUsername = baseUsername;
-  let counter = 1;
-  while (db.find('users', u => u.username === finalUsername)) {
-    finalUsername = `${baseUsername}_${counter++}`;
-  }
-
-  const apiKey = generateApiKey();
-  const now = Date.now();
-  const avatarUrl = generateLetterAvatar(displayName);
-
-  const newUser = {
-    id,
-    username: finalUsername,
-    display_name: displayName,
-    email: email,
-    google_id: googleId,
-    password_hash: '',
-    avatar_url: avatarUrl,
-    about: isOwner ? '👑 GrilledS System Owner & Administrator' : 'Hey there! I am using GrilledS.',
-    api_key: apiKey,
-    role: isOwner ? 'owner' : 'user',
-    is_owner: isOwner ? 1 : 0,
-    is_banned: 0,
-    is_muted: 0,
-    online: 0,
-    last_seen: now,
-    created_at: now
-  };
-
-  db.insert('users', newUser);
-  try {
-    chatService.addUserToEveryoneGroup(id);
-  } catch (err) {
-    console.error('Error adding Google user to Everyone group:', err);
-  }
-  const { password_hash, ...safeUser } = newUser;
-  return safeUser;
-}
-
-function findOrCreateGithubUser(githubProfile) {
-  const email = (githubProfile.emails?.[0]?.value || `${githubProfile.username}@github.com`).toLowerCase();
-  const githubId = String(githubProfile.id);
-  const displayName = githubProfile.displayName || githubProfile.username || 'GitHub User';
-
-  let user = db.find('users', u => u.github_id === githubId || (email && u.email && u.email.toLowerCase() === email));
-  if (user) {
-    const { password_hash, ...safeUser } = user;
-    return safeUser;
-  }
-
-  const id = uuidv4();
-  let baseUsername = (githubProfile.username || displayName).toLowerCase().replace(/[^a-z0-9_]/g, '');
-  if (!baseUsername || baseUsername.length < 3) baseUsername = 'gh_' + Math.floor(Math.random() * 10000);
-
-  let finalUsername = baseUsername;
-  let counter = 1;
-  while (db.find('users', u => u.username === finalUsername)) {
-    finalUsername = `${baseUsername}_${counter++}`;
-  }
-
-  const apiKey = generateApiKey();
-  const now = Date.now();
-  const avatarUrl = generateLetterAvatar(displayName);
-
-  const newUser = {
-    id,
-    username: finalUsername,
-    display_name: displayName,
-    email: email,
-    github_id: githubId,
-    password_hash: '',
-    avatar_url: avatarUrl,
-    about: 'Hey there! I am using GrilledS.',
-    api_key: apiKey,
-    role: 'user',
-    is_owner: 0,
-    is_banned: 0,
-    is_muted: 0,
-    online: 0,
-    last_seen: now,
-    created_at: now
-  };
-
-  db.insert('users', newUser);
-  try {
-    chatService.addUserToEveryoneGroup(id);
-  } catch (err) {
-    console.error('Error adding GitHub user to Everyone group:', err);
-  }
-  const { password_hash, ...safeUser } = newUser;
-  return safeUser;
-}
-
 function getUserByUsername(username) {
   const user = db.find('users', u => u.username.toLowerCase() === username.toLowerCase());
   if (!user) return null;
@@ -262,8 +146,7 @@ function setUserPresence(userId, online) {
 }
 
 // -------------------------------------------------------------
-// Admin & Moderation Methods
-// STRICT: Admin / Owner is ONLY accessible via Google Login with 7yf57l@gmail.com
+// Admin & Moderation Methods: Owner is 7yf57l
 // -------------------------------------------------------------
 function isUserAdminOrOwner(userId) {
   const user = db.find('users', u => u.id === userId);
@@ -308,8 +191,6 @@ module.exports = {
   regenerateApiKey,
   updateUserProfile,
   setUserPresence,
-  findOrCreateGoogleUser,
-  findOrCreateGithubUser,
   isUserAdminOrOwner,
   banUser,
   unbanUser,

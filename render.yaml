@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: grilleds
+    name: grilledschat
     env: node
     plan: free
     buildCommand: npm install
@@ -12,11 +12,4 @@ services:
         value: production
       - key: JWT_SECRET
         generateValue: true
-      - key: GOOGLE_CLIENT_ID
-        sync: false
-      - key: GOOGLE_CLIENT_SECRET
-        sync: false
-      - key: GITHUB_CLIENT_ID
-        sync: false
-      - key: GITHUB_CLIENT_SECRET
-        sync: false
+

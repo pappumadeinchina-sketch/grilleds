@@ -1,55 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const GitHubStrategy = require('passport-github2').Strategy;
 const userService = require('../services/userService');
-
-// Base URL auto-detection (supports Render.com and custom domain)
-const baseUrl = (process.env.RENDER_EXTERNAL_URL || process.env.BASE_URL || 'http://localhost:3000').replace(/\/+$/, '');
-
-// Passport Google Strategy Setup
-const googleClientId = process.env.GOOGLE_CLIENT_ID || '233126200084-5o9aaskbrkh2ldaolfeggpkhidkeb1hn.apps.googleusercontent.com';
-const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET || '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';
-const googleCallbackUrl = process.env.GOOGLE_CALLBACK_URL || `${baseUrl}/auth/google/callback`;
-
-passport.use(new GoogleStrategy({
-  clientID: googleClientId,
-  clientSecret: googleClientSecret,
-  callbackURL: googleCallbackUrl
-}, (accessToken, refreshToken, profile, done) => {
-  try {
-    const user = userService.findOrCreateGoogleUser(profile);
-    return done(null, user);
-  } catch (err) {
-    return done(err, null);
-  }
-}));
-
-// Passport GitHub Strategy Setup
-const githubClientId = process.env.GITHUB_CLIENT_ID || 'Ov23liSuGosMO8VZipGH';
-const githubClientSecret = process.env.GITHUB_CLIENT_SECRET || '610ad62e7927670712ddf9dcee8491a961cf3274';
-const githubCallbackUrl = process.env.GITHUB_CALLBACK_URL || `${baseUrl}/auth/github/callback`;
-
-passport.use(new GitHubStrategy({
-  clientID: githubClientId,
-  clientSecret: githubClientSecret,
-  callbackURL: githubCallbackUrl
-}, (accessToken, refreshToken, profile, done) => {
-  try {
-    const user = userService.findOrCreateGithubUser(profile);
-    return done(null, user);
-  } catch (err) {
-    return done(err, null);
-  }
-}));
-
-passport.serializeUser((user, done) => done(null, user.id));
-passport.deserializeUser((id, done) => {
-  const user = userService.getUserById(id);
-  done(null, user);
-});
 
 // Middleware to authenticate JWT
 function authenticateToken(req, res, next) {
@@ -69,35 +21,7 @@ function authenticateToken(req, res, next) {
   });
 }
 
-// ===================== GOOGLE OAUTH ROUTES =====================
-router.get('/google', passport.authenticate('google', {
-  scope: ['profile', 'email']
-}));
-
-router.get('/google/callback', passport.authenticate('google', {
-  failureRedirect: '/login?error=google_failed',
-  session: false
-}), (req, res) => {
-  const user = req.user;
-  const token = jwt.sign({ id: user.id, username: user.username }, userService.JWT_SECRET, { expiresIn: '30d' });
-  res.redirect(`/auth-success?token=${encodeURIComponent(token)}`);
-});
-
-// ===================== GITHUB OAUTH ROUTES =====================
-router.get('/github', passport.authenticate('github', {
-  scope: ['user:email']
-}));
-
-router.get('/github/callback', passport.authenticate('github', {
-  failureRedirect: '/login?error=github_failed',
-  session: false
-}), (req, res) => {
-  const user = req.user;
-  const token = jwt.sign({ id: user.id, username: user.username }, userService.JWT_SECRET, { expiresIn: '30d' });
-  res.redirect(`/auth-success?token=${encodeURIComponent(token)}`);
-});
-
-// POST /api/auth/register
+// POST /api/auth/register - Pure local registration
 router.post('/register', (req, res) => {
   try {
     const { username, displayName, password } = req.body;
@@ -116,7 +40,7 @@ router.post('/register', (req, res) => {
   }
 });
 
-// POST /api/auth/login
+// POST /api/auth/login - Pure local login (by username or email)
 router.post('/login', (req, res) => {
   try {
     const { username, password } = req.body;
@@ -134,7 +58,7 @@ router.post('/login', (req, res) => {
   }
 });
 
-// GET /api/auth/me
+// GET /api/auth/me - Current user session
 router.get('/me', authenticateToken, (req, res) => {
   const user = userService.getUserById(req.user.id);
   if (!user) {

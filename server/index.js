@@ -3,8 +3,6 @@ const express = require('express');
 const http = require('http');
 const path = require('path');
 const cors = require('cors');
-const passport = require('passport');
-const session = require('express-session');
 const { Server } = require('socket.io');
 
 // Database initialization
@@ -42,17 +40,6 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-// Session & Passport Initialization (Required for Passport OAuth Strategies)
-const JWT_SECRET = process.env.JWT_SECRET || 'pulsechat_super_secret_jwt_key_2026';
-app.use(session({
-  secret: JWT_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  cookie: { secure: false }
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-
 // No-cache middleware to prevent browsers from executing stale cached JS/CSS files
 app.use((req, res, next) => {
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
@@ -64,9 +51,6 @@ app.use((req, res, next) => {
 // Static files (Frontend UI & Uploads)
 app.use(express.static(path.join(__dirname, '../public'), { etag: false, maxAge: 0 }));
 app.use('/uploads', express.static(path.join(__dirname, '../public/uploads'), { etag: false, maxAge: 0 }));
-
-// Direct OAuth top-level routes matching callback paths (e.g., /auth/google, /auth/google/callback, /auth/github, /auth/github/callback)
-app.use('/auth', authRoutes);
 
 // Standard API Routes
 app.use('/api/auth', authRoutes);

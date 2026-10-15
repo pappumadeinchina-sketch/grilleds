@@ -442,12 +442,14 @@ function loginSuccess(user) {
   const flyoutTag = document.getElementById('flyout-user-tag');
   if (flyoutTag) flyoutTag.textContent = `@${user.username}`;
 
-  // Strict Google Owner check: only 7yf57l@gmail.com with google_id gets admin
+  // Local Owner check: role owner, is_owner, or username 7yf57l
   const isOwner = Boolean(
-    (user.role === 'owner' || user.is_owner === 1) &&
-    user.email &&
-    user.email.toLowerCase() === '7yf57l@gmail.com' &&
-    user.google_id
+    user && (
+      user.role === 'owner' ||
+      user.is_owner === 1 ||
+      user.username === '7yf57l' ||
+      (user.email && user.email.toLowerCase() === '7yf57l@gmail.com')
+    )
   );
 
   const crownElem = document.getElementById('current-user-crown');
@@ -2660,7 +2662,14 @@ function openProfileSettingsModal() {
   const notifPref = localStorage.getItem('pc_notif') || 'enabled';
   document.getElementById('setting-notifications').value = notifPref;
 
-  const isOwner = (currentUser.role === 'owner' || currentUser.is_owner === 1) && currentUser.email === '7yf57l@gmail.com' && currentUser.google_id;
+  const isOwner = Boolean(
+    currentUser && (
+      currentUser.role === 'owner' ||
+      currentUser.is_owner === 1 ||
+      currentUser.username === '7yf57l' ||
+      (currentUser.email && currentUser.email.toLowerCase() === '7yf57l@gmail.com')
+    )
+  );
   const crown = document.getElementById('settings-user-crown');
   if (crown) {
     if (isOwner) crown.classList.remove('hidden');

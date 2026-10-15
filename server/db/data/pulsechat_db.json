@@ -67,7 +67,7 @@
       "is_banned": 0,
       "is_muted": 0,
       "online": 0,
-      "last_seen": 1792073830039,
+      "last_seen": 1792074941194,
       "created_at": 1791631786759
     },
     {
@@ -120,6 +120,40 @@
       "online": 0,
       "last_seen": 1791708430661,
       "created_at": 1791708430661
+    },
+    {
+      "id": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "username": "localuser_743",
+      "display_name": "Local Tester",
+      "email": "",
+      "password_hash": "$2a$10$hR/aqBd/gO1iGtwih8tbiesawOQqLAvemw2qTbdpT6aXjV4YLCLsG",
+      "avatar_url": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22128%22%20height%3D%22128%22%20viewBox%3D%220%200%20128%20128%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f97316%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23c2410c%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%2264%22%20fill%3D%22url(%23grad)%22%20%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2254%25%22%20font-family%3D%22Plus%20Jakarta%20Sans%2C%20sans-serif%22%20font-size%3D%2256%22%20font-weight%3D%22bold%22%20fill%3D%22%23ffffff%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%3EL%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "about": "Hey there! I am using GrilledS.",
+      "api_key": "pc_live_949a72436eb1730c503b964864004d394c3f0f003659b3b5",
+      "role": "user",
+      "is_owner": 0,
+      "is_banned": 0,
+      "is_muted": 0,
+      "online": 0,
+      "last_seen": 1792075017893,
+      "created_at": 1792075017893
+    },
+    {
+      "id": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "username": "verify_local_1792075033466",
+      "display_name": "Local Tester",
+      "email": "",
+      "password_hash": "$2a$10$jASZrp4QWvdcB4AIHcy8.elrcYdSDEJCAobjQhCOiAIiTECG4MQd6",
+      "avatar_url": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22128%22%20height%3D%22128%22%20viewBox%3D%220%200%20128%20128%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22grad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f97316%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23c2410c%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%2264%22%20fill%3D%22url(%23grad)%22%20%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2254%25%22%20font-family%3D%22Plus%20Jakarta%20Sans%2C%20sans-serif%22%20font-size%3D%2256%22%20font-weight%3D%22bold%22%20fill%3D%22%23ffffff%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%3EL%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "about": "Hey there! I am using GrilledS.",
+      "api_key": "pc_live_714e7aa4369a5d82bf6bb7a0a503d2bf1766e50615c4d4d0",
+      "role": "user",
+      "is_owner": 0,
+      "is_banned": 0,
+      "is_muted": 0,
+      "online": 0,
+      "last_seen": 1792075033672,
+      "created_at": 1792075033672
     }
   ],
   "conversations": [
@@ -321,6 +355,141 @@
       "created_by": "e5e326af-a3c3-4248-b895-bcadf48a0520",
       "created_at": 1792073816569,
       "updated_at": 1792073816569
+    },
+    {
+      "id": "311d127a-01c7-4388-b6af-bba7e1e100c6",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "created_at": 1792075017905,
+      "updated_at": 1792075017905
+    },
+    {
+      "id": "901b546d-abf9-45dc-8a5f-0b94061eea2a",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "created_at": 1792075017908,
+      "updated_at": 1792075017908
+    },
+    {
+      "id": "e20bfe3f-ae4c-4216-aa97-9901da40d420",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "created_at": 1792075017911,
+      "updated_at": 1792075017911
+    },
+    {
+      "id": "7670e9b2-0e16-4211-8a20-17baf7a2202f",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "created_at": 1792075017913,
+      "updated_at": 1792075017913
+    },
+    {
+      "id": "e79eb730-6775-4d34-833b-53c40fb88769",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "created_at": 1792075017916,
+      "updated_at": 1792075017916
+    },
+    {
+      "id": "59217dd1-b9e0-40a0-aa25-e4c52b0b441e",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "created_at": 1792075017919,
+      "updated_at": 1792075017919
+    },
+    {
+      "id": "e5fc8161-48c6-4d6c-98cf-86f24230d8da",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "created_at": 1792075017921,
+      "updated_at": 1792075017921
+    },
+    {
+      "id": "4e912f8f-a446-4e59-bd6e-61b6f891c77e",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "created_at": 1792075033691,
+      "updated_at": 1792075033691
+    },
+    {
+      "id": "ad161f7c-f0f1-406a-85bd-132c2d2cef76",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "created_at": 1792075033694,
+      "updated_at": 1792075033694
+    },
+    {
+      "id": "58e1e3d4-3fd5-49d8-9c9d-a30a91ca61ac",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "created_at": 1792075033696,
+      "updated_at": 1792075033696
+    },
+    {
+      "id": "6578b25a-1c11-4457-ad48-a61afb4048e8",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "created_at": 1792075033699,
+      "updated_at": 1792075033699
+    },
+    {
+      "id": "e8c84e95-ed92-47ce-9440-7b8f0cc3966c",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "created_at": 1792075033701,
+      "updated_at": 1792075033701
+    },
+    {
+      "id": "203ba7a8-6e3d-44d8-be36-4f91e5101cbe",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "created_at": 1792075033704,
+      "updated_at": 1792075033704
+    },
+    {
+      "id": "75df6b45-6288-4c5c-87c6-ab0bb5984f7f",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "created_at": 1792075033706,
+      "updated_at": 1792075033706
+    },
+    {
+      "id": "d8b0b7c8-12c0-416d-a72e-19e1976681da",
+      "type": "direct",
+      "name": "",
+      "avatar_url": "",
+      "created_by": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "created_at": 1792075033710,
+      "updated_at": 1792075033710
     }
   ],
   "participants": [
@@ -581,6 +750,198 @@
       "user_id": "4a76338e-db74-483c-a374-aa4b114b1894",
       "role": "member",
       "joined_at": 1792073816569
+    },
+    {
+      "conversation_id": "group_everyone",
+      "user_id": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "role": "member",
+      "joined_at": 1792075017894
+    },
+    {
+      "conversation_id": "311d127a-01c7-4388-b6af-bba7e1e100c6",
+      "user_id": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "role": "member",
+      "joined_at": 1792075017905
+    },
+    {
+      "conversation_id": "311d127a-01c7-4388-b6af-bba7e1e100c6",
+      "user_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "role": "member",
+      "joined_at": 1792075017905
+    },
+    {
+      "conversation_id": "901b546d-abf9-45dc-8a5f-0b94061eea2a",
+      "user_id": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "role": "member",
+      "joined_at": 1792075017908
+    },
+    {
+      "conversation_id": "901b546d-abf9-45dc-8a5f-0b94061eea2a",
+      "user_id": "fac1297c-39dd-491f-b149-f57f2a13ec95",
+      "role": "member",
+      "joined_at": 1792075017908
+    },
+    {
+      "conversation_id": "e20bfe3f-ae4c-4216-aa97-9901da40d420",
+      "user_id": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "role": "member",
+      "joined_at": 1792075017911
+    },
+    {
+      "conversation_id": "e20bfe3f-ae4c-4216-aa97-9901da40d420",
+      "user_id": "896cd5a1-a8b3-4fab-8c16-d00b54ee065a",
+      "role": "member",
+      "joined_at": 1792075017911
+    },
+    {
+      "conversation_id": "7670e9b2-0e16-4211-8a20-17baf7a2202f",
+      "user_id": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "role": "member",
+      "joined_at": 1792075017913
+    },
+    {
+      "conversation_id": "7670e9b2-0e16-4211-8a20-17baf7a2202f",
+      "user_id": "e5e326af-a3c3-4248-b895-bcadf48a0520",
+      "role": "member",
+      "joined_at": 1792075017913
+    },
+    {
+      "conversation_id": "e79eb730-6775-4d34-833b-53c40fb88769",
+      "user_id": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "role": "member",
+      "joined_at": 1792075017916
+    },
+    {
+      "conversation_id": "e79eb730-6775-4d34-833b-53c40fb88769",
+      "user_id": "9bb42238-1ba3-4fee-a25c-cc51a89b11ca",
+      "role": "member",
+      "joined_at": 1792075017916
+    },
+    {
+      "conversation_id": "59217dd1-b9e0-40a0-aa25-e4c52b0b441e",
+      "user_id": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "role": "member",
+      "joined_at": 1792075017919
+    },
+    {
+      "conversation_id": "59217dd1-b9e0-40a0-aa25-e4c52b0b441e",
+      "user_id": "4a76338e-db74-483c-a374-aa4b114b1894",
+      "role": "member",
+      "joined_at": 1792075017919
+    },
+    {
+      "conversation_id": "e5fc8161-48c6-4d6c-98cf-86f24230d8da",
+      "user_id": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "role": "member",
+      "joined_at": 1792075017921
+    },
+    {
+      "conversation_id": "e5fc8161-48c6-4d6c-98cf-86f24230d8da",
+      "user_id": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "role": "member",
+      "joined_at": 1792075017921
+    },
+    {
+      "conversation_id": "group_everyone",
+      "user_id": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "role": "member",
+      "joined_at": 1792075033673
+    },
+    {
+      "conversation_id": "4e912f8f-a446-4e59-bd6e-61b6f891c77e",
+      "user_id": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "role": "member",
+      "joined_at": 1792075033691
+    },
+    {
+      "conversation_id": "4e912f8f-a446-4e59-bd6e-61b6f891c77e",
+      "user_id": "57e59710-d386-417e-8fe8-d699651b9dc2",
+      "role": "member",
+      "joined_at": 1792075033691
+    },
+    {
+      "conversation_id": "ad161f7c-f0f1-406a-85bd-132c2d2cef76",
+      "user_id": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "role": "member",
+      "joined_at": 1792075033694
+    },
+    {
+      "conversation_id": "ad161f7c-f0f1-406a-85bd-132c2d2cef76",
+      "user_id": "fac1297c-39dd-491f-b149-f57f2a13ec95",
+      "role": "member",
+      "joined_at": 1792075033694
+    },
+    {
+      "conversation_id": "58e1e3d4-3fd5-49d8-9c9d-a30a91ca61ac",
+      "user_id": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "role": "member",
+      "joined_at": 1792075033696
+    },
+    {
+      "conversation_id": "58e1e3d4-3fd5-49d8-9c9d-a30a91ca61ac",
+      "user_id": "896cd5a1-a8b3-4fab-8c16-d00b54ee065a",
+      "role": "member",
+      "joined_at": 1792075033696
+    },
+    {
+      "conversation_id": "6578b25a-1c11-4457-ad48-a61afb4048e8",
+      "user_id": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "role": "member",
+      "joined_at": 1792075033699
+    },
+    {
+      "conversation_id": "6578b25a-1c11-4457-ad48-a61afb4048e8",
+      "user_id": "e5e326af-a3c3-4248-b895-bcadf48a0520",
+      "role": "member",
+      "joined_at": 1792075033699
+    },
+    {
+      "conversation_id": "e8c84e95-ed92-47ce-9440-7b8f0cc3966c",
+      "user_id": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "role": "member",
+      "joined_at": 1792075033701
+    },
+    {
+      "conversation_id": "e8c84e95-ed92-47ce-9440-7b8f0cc3966c",
+      "user_id": "9bb42238-1ba3-4fee-a25c-cc51a89b11ca",
+      "role": "member",
+      "joined_at": 1792075033701
+    },
+    {
+      "conversation_id": "203ba7a8-6e3d-44d8-be36-4f91e5101cbe",
+      "user_id": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "role": "member",
+      "joined_at": 1792075033704
+    },
+    {
+      "conversation_id": "203ba7a8-6e3d-44d8-be36-4f91e5101cbe",
+      "user_id": "4a76338e-db74-483c-a374-aa4b114b1894",
+      "role": "member",
+      "joined_at": 1792075033704
+    },
+    {
+      "conversation_id": "75df6b45-6288-4c5c-87c6-ab0bb5984f7f",
+      "user_id": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "role": "member",
+      "joined_at": 1792075033706
+    },
+    {
+      "conversation_id": "75df6b45-6288-4c5c-87c6-ab0bb5984f7f",
+      "user_id": "702152ea-3c16-4a19-ab88-0bb7e199895c",
+      "role": "member",
+      "joined_at": 1792075033706
+    },
+    {
+      "conversation_id": "d8b0b7c8-12c0-416d-a72e-19e1976681da",
+      "user_id": "a0b9a4f4-f3ed-4be9-9805-ba9a0f62c73b",
+      "role": "member",
+      "joined_at": 1792075033710
+    },
+    {
+      "conversation_id": "d8b0b7c8-12c0-416d-a72e-19e1976681da",
+      "user_id": "01208ab8-9207-40aa-8ae6-379eef5458e8",
+      "role": "member",
+      "joined_at": 1792075033710
     }
   ],
   "messages": [
