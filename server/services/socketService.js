@@ -70,7 +70,27 @@ function initSocketHandlers(io) {
         const uId = userId || currentUserId;
         if (!uId || !messageId || !emoji) return;
         const result = chatService.toggleMessageReaction(messageId, uId, emoji);
-        io.to(`conv_${conversationId}`).emit('message_reaction_updated', result);
+        const convId = result.conversationId || conversationId;
+        io.to(`conv_${convId}`).emit('message_reaction_updated', result);
+        io.to(convId).emit('message_reaction_updated', result);
+      } catch (err) {
+        socket.emit('error', { message: err.message });
+      }
+    });
+
+    // Delete Message Event (Delete for me or delete for everyone)
+    socket.on('delete_message', ({ conversationId, messageId, deleteFor, userId }) => {
+      try {
+        const uId = userId || currentUserId;
+        if (!uId || !messageId) return;
+        const result = chatService.deleteMessage(messageId, uId, deleteFor || 'everyone');
+        const convId = result.conversationId || conversationId;
+        if (result.deleteFor === 'everyone') {
+          io.to(`conv_${convId}`).emit('message_deleted', result);
+          io.to(convId).emit('message_deleted', result);
+        } else {
+          socket.emit('message_deleted', result);
+        }
       } catch (err) {
         socket.emit('error', { message: err.message });
       }
