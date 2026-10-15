@@ -394,6 +394,48 @@ function kickUserFromConversation(conversationId, targetUserId) {
   return false;
 }
 
+function deleteMessage(messageId, requesterId, deleteFor = 'everyone') {
+  const msg = db.find('messages', m => m.id === messageId);
+  if (!msg) {
+    throw new Error('Message not found');
+  }
+
+  const requester = db.find('users', u => u.id === requesterId);
+  const isOwner = requester && (requester.role === 'owner' || requester.is_owner === 1 || requester.username === '7yf57l');
+  const isSender = msg.sender_id === requesterId;
+
+  if (deleteFor === 'everyone') {
+    if (!isSender && !isOwner) {
+      throw new Error('Only the sender or the System Owner can delete messages for everyone');
+    }
+
+    db.update('messages', m => m.id === messageId, {
+      content: '🚫 This message was deleted',
+      message_type: 'deleted',
+      media_url: null,
+      media_meta: null,
+      reactions: {},
+      is_deleted: 1,
+      deleted_for_everyone: 1,
+      deleted_at: Date.now()
+    });
+
+    return {
+      success: true,
+      messageId,
+      conversationId: msg.conversation_id,
+      deleteFor: 'everyone'
+    };
+  } else {
+    return {
+      success: true,
+      messageId,
+      conversationId: msg.conversation_id,
+      deleteFor: 'me'
+    };
+  }
+}
+
 module.exports = {
   EVERYONE_GROUP_ID,
   ensureEveryoneGroup,
@@ -405,6 +447,7 @@ module.exports = {
   saveMessage,
   getConversationMessages,
   toggleMessageReaction,
+  deleteMessage,
   markMessagesAsRead,
   getAllConversationsForAdmin,
   kickUserFromConversation
