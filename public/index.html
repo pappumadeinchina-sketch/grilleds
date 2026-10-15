@@ -15,7 +15,7 @@
   <!-- Socket.io -->
   <script src="/socket.io/socket.io.js"></script>
   
-  <link rel="stylesheet" href="/css/styles.css?v=4">
+  <link rel="stylesheet" href="/css/styles.css?v=5">
   
   <!-- Immediate Auth Guard: redirect unauthenticated users to /login instantly -->
   <script>
@@ -565,9 +565,13 @@
           <i class="fa-solid fa-copy"></i>
           <span>Copy Text</span>
         </button>
-        <button class="context-action-item danger" id="context-btn-delete">
+        <button class="context-action-item danger" id="context-btn-delete-everyone" title="Delete for all participants">
+          <i class="fa-solid fa-trash-can"></i>
+          <span>Delete for Everyone</span>
+        </button>
+        <button class="context-action-item" id="context-btn-delete-me" title="Delete only from your view" style="color: var(--text-muted);">
           <i class="fa-solid fa-trash"></i>
-          <span>Delete For Me</span>
+          <span>Delete for Me</span>
         </button>
       </div>
     </div>
@@ -622,7 +626,7 @@
       </div>
 
       <!-- Directory Users List -->
-      <div class="forward-chat-list" id="directory-modal-users-list" style="max-height: 280px; overflow-y: auto;">
+      <div class="forward-chat-list" id="directory-modal-users-list">
         <!-- Dynamically rendered list of all joined people -->
       </div>
     </div>
@@ -637,6 +641,6 @@
   <script src="/js/modal.js?v=4"></script>
   <script src="/js/webrtc.js?v=3"></script>
   <script src="/js/stickers_data.js?v=3"></script>
-  <script src="/js/app.js?v=3"></script>
+  <script src="/js/app.js?v=4"></script>
 </body>
 </html>
